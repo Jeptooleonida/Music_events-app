@@ -36,7 +36,7 @@ function handleSubmit(e) {
         capacity: capacity
         }
 
-        
+
         fetch("http://localhost:9292/add-venue",{
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -50,9 +50,62 @@ function handleSubmit(e) {
 
 
   return (
-    <div>
-      
-    </div>
+    <>
+    <br/>
+    <h2>Add a Venue</h2>
+    <br/>
+    <form onSubmit={handleSubmit} className="form">
+    <label className="input-label"  htmlFor="venue-name">Venue Name:</label>
+        <input 
+        name="venue-name"
+        type="string"
+        placeholder="Venue Name..."
+        value={venue}
+        onChange={handleVenueChange}
+        className="form-input"
+        >
+        </input>
+        <br/>
+        <br/>
+        <label className="input-label"  htmlFor="address">Address:</label>
+        <input 
+        name="Address"
+        type="string"
+        placeholder="Address..."
+        value={address}
+        onChange={handleAddressChange}
+        className="form-input"
+        >
+        </input>
+        <br/>
+        <br/>
+        <label className="input-label"  htmlFor="phone">Phone:</label>
+        <input 
+        name="Phone"
+        type="string"
+        placeholder="Phone..."
+        value={phone}
+        onChange={handlePhoneChange}
+        className="form-input"
+        >
+        </input>
+        <br/>
+        <br/>
+        <label className="input-label"  htmlFor="capacity">Capacity:</label>
+        <input 
+        name="Capacity"
+        type="number"
+        placeholder="Capacity..."
+        value={capacity}
+        onChange={handleCapacityChange}
+        className="form-input"
+        >
+        </input>
+        <br/>
+        <br/>
+        <button className="form-input" type="submit">Create Venue</button> 
+        </form>
+    </>
   )
 }
 
