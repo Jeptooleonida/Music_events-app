@@ -1,10 +1,18 @@
 import React from 'react'
+import EventList from './EventList';
 
-const EventContainer = () => {
+const EventContainer = ({data, handleDeleteEvent, handleUpdateEvent}) => {
   return (
-    <div>
-      
-    </div>
+    <>
+    <br/>
+    <h2>My Events</h2>
+    <br/>
+        <EventList 
+        data={data} 
+        handleDeleteEvent={handleDeleteEvent}
+        handleUpdateEvent={handleUpdateEvent}
+        />
+    </>
   )
 }
 
