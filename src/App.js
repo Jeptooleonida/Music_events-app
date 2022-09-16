@@ -1,19 +1,22 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import EventContainer from './Components/EventContainer';
-import Header from './Components/Header';
-import EventForm from './Components/EventForm';
-import VenueForm from './Components/VenueForm';
-import Stats from './Components/Stats';
+import EventContainer from './components/EventContainer';
+import Header from './components/Header';
+import EventForm from './components/EventForm';
+import VenueForm from './components/VenueForm';
+import Stats from './components/Stats';
+import './App.css';
 
 function App() {
   const [data, setData] = useState([])
-
   useEffect(() => {
       fetch('http://localhost:9292/')
       .then(r => r.json())
-      .then(data => setData(data))
+      .then(data =>{
+        setData(data)
+      } )
     }, [])
+
 
   function handleDeleteEvent(eventToDelete){
     const updatedEvents = data.filter((event) => {
@@ -38,24 +41,22 @@ function App() {
   }
 
    return (
-    <>
+    <Router>
     <div className="app">
     <Header/>
       <Routes>
-            <Route exact path='/my-events' element={
-            <EventContainer 
-            data={data} 
-            handleDeleteEvent={handleDeleteEvent} 
+            <Route exact path="/my-events" element={
+            <EventContainer
+            data={data}
+            handleDeleteEvent={handleDeleteEvent}
             handleUpdateEvent={handleUpdateEvent}
             />} />
-            <Route exact path='/create-event' element={<EventForm />} />
-            <Route exact path='/create-venue' element={<VenueForm />} />
-            <Route exact path='/stats' element={<Stats/>} />
-      </Routes>  
+            <Route exact path="/create-event" element={<EventForm />} />
+            <Route exact path="/create-venue" element={<VenueForm />} />
+            <Route exact path="/stats" element={<Stats/>} />
+      </Routes>
     </div>
-    </>
+    </Router>
   );
 }
-
-
 export default App;
