@@ -4,7 +4,6 @@ import EventContainer from './components/EventContainer';
 import Header from './components/Header';
 import EventForm from './components/EventForm';
 import VenueForm from './components/VenueForm';
-import Stats from './components/Stats';
 import './App.css';
 
 function App() {
@@ -53,7 +52,6 @@ function App() {
             />} />
             <Route exact path="/create-event" element={<EventForm />} />
             <Route exact path="/create-venue" element={<VenueForm />} />
-            <Route exact path="/stats" element={<Stats/>} />
       </Routes>
     </div>
     </Router>
